@@ -1,19 +1,19 @@
 'use strict';
 
 var escapeRegExp = require('escape-string-regexp');
-var objectAssign = require('object-assign');
-var Transform = require('readable-stream/transform');
+var { Transform } = require('stream');
 
 module.exports = function ReplaceStream(search, replace, options) {
   var tail = '';
   var totalMatches = 0;
   var isRegex = search instanceof RegExp;
 
-  options = objectAssign({
+  options = {
     limit: Infinity,
     encoding: 'utf8',
-    maxMatchLen: 100
-  }, options);
+    maxMatchLen: 100,
+    ...options
+  }
 
   var replaceFn = replace;
 
@@ -30,7 +30,6 @@ module.exports = function ReplaceStream(search, replace, options) {
   function transform(buf, enc, cb) {
     var matches;
     var lastPos = 0;
-    var runningMatch = '';
     var matchCount = 0;
     var rewritten = '';
     var haystack = tail + buf.toString(options.encoding);

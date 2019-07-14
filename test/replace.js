@@ -928,9 +928,9 @@ describe('replacestream', function () {
       expect(recievedChunks[2]).to.have.length(100)
       done()
     })
-    replace.write((new Buffer(50)).fill(0))
-    replace.write((new Buffer(49)).fill(0))
-    replace.write((new Buffer(100)).fill(0))
-    replace.end((new Buffer(50)).fill(0))
+    replace.write(Buffer.alloc(50).fill(0))
+    replace.write(Buffer.alloc(49).fill(0))
+    replace.write(Buffer.alloc(100).fill(0))
+    replace.end(Buffer.alloc(50).fill(0))
   });
 });
