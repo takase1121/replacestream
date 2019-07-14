@@ -23,7 +23,8 @@
     "search"
   ],
   "dependencies": {
-    "escape-string-regexp": "^1.0.3"
+    "escape-string-regexp": "^1.0.3",
+    "readable-stream": "^3.4.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",

@@ -1,7 +1,7 @@
 'use strict';
 
 var escapeRegExp = require('escape-string-regexp');
-var { Transform } = require('stream');
+var { Transform } = require('readable-stream');
 
 module.exports = function ReplaceStream(search, replace, options) {
   var tail = '';
